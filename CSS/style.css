@@ -167,14 +167,39 @@ body {
   padding: 1.4rem 7%;
 }
 
-.service-list .content .video {
+.video {
   display: flex;
   justify-content: center;
   gap: 20px;
   padding: 20px;
   flex-wrap: wrap;
-  
 }
+.video-card{
+  text-align: center;
+  max-width: 450px;
+}
+.video-card video {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.video-card h3 {
+  margin-top: 10px;
+  font-size: 2rem;
+  color:#4cbb17;
+}
+.video-card p {
+  font-size: 1.4rem;
+  color:#fff;
+}
+.video-card video:hover{
+  transform: scale(1.1);
+  transition: transform 1.1 ease;
+
+}
+
+
+
 
 /*Media Queries*/
 
