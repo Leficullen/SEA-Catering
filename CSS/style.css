@@ -225,6 +225,12 @@ body {
 
 
 /* subscription*/
+.subscription .container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
 
 .subscription .subscribe {
   color: #4cbb17;
@@ -235,6 +241,42 @@ body {
 }
 .subscription .subscribe span {
   color:#fff;
+}
+
+.subscribe .form-wrapper {
+  width: 80%;
+  max-width: 900px;
+  margin: auto;
+  background-color: #111;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+
+}
+
+.subscribe .user-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 1.5rem;
+}
+
+.subscribe .input-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.subscribe .input-box .details {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: #4cbb17;
+}
+
+.subscribe .input-box input{
+  padding: 0.7rem;
+  border-radius: 6px;
+  background-color: #222;
+  color: #fff;
 }
 
 /*Media Queries*/
