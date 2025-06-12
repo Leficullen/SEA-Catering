@@ -17,7 +17,7 @@ body {
   background-color: #000;
   color: #ffffff;
   min-height: 2000px;
-  padding-top: 80px;
+  padding-top: 50px;
 }
 
 /*Navbar*/
@@ -207,25 +207,20 @@ body {
 }
 
 /* menu */
-.menu {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.menu .ourmenu {
+  color: #4cbb17;
+  padding-top: 10px;
+  font-size: 3rem;
+  font-weight: bold;
   text-align: center;
-  align-items: center;
-  justify-content: center;
-  padding-top: 80px;
-
 }
+.menu h2{
+  color: #4cbb17;
+  padding-top: 10px;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
 
-.menu .menu-list {
-  color:#4cbb17;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  flex-wrap: wrap;
-  padding: 2rem 7%;
-  gap: 2rem;
 }
 
 
@@ -233,7 +228,7 @@ body {
 
 .subscription .subscribe {
   color: #4cbb17;
-  padding-top: 10px;
+  padding-top: 25px;
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
