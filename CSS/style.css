@@ -165,7 +165,7 @@ body {
 
 /* service list */
 .service-list .content h2{
-  font-size: 2.5rem;
+  font-size: 3rem;
   text-align: center;
   padding: 1.4rem 7%;
   color:#4cbb17;
@@ -206,35 +206,28 @@ body {
 
 }
 
-/* menu */
-.menu .ourmenu {
-  color: #4cbb17;
-  padding-top: 10px;
-  font-size: 3rem;
-  font-weight: bold;
-  text-align: center;
-}
-.menu h2{
-  color: #4cbb17;
-  padding-top: 10px;
-  font-size: 3rem;
-  font-weight: bold;
-  text-align: center;
-
-}
-
-
 /* subscription*/
+.input-box label:hover{
+  color:#4cbb17;
+  background-color: #fff;
+}
+.input-box label:has(input:checked) {
+  color:#4cbb17;
+  background-color: #fff;
+}
 .subscription {
-  padding: 100px 20px 40px;
+  padding: 60px 20px;
   text-align: center;
-  max-height: 100%;
-  background-color: #222;
-  background-image: url(img/header-bg.jpg);
+  background-image: url(../img/header-bg.jpg) !important;
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat;   
   background-position: center;
   position: relative;
+  height: 100vh;
+  border: 2px solid red;
+  height: auto;
+  width: 100%;
+  overflow: hidden;
 }
 
 .subscription .subscribe {
@@ -301,14 +294,7 @@ body {
   padding-inline: 10px;
 
 }
-.subscription, .input-box label:hover{
-  color:#4cbb17;
-  background-color: #fff;
-}
-.subscription, .input-box label:has(input:checked) {
-  color:#4cbb17;
-  background-color: #fff;
-}
+
 .subscription .gender-details {
   margin-top: 2px;
 }
@@ -370,6 +356,52 @@ body {
   background-color: #fff;
   color: #4cbb17;
 }
+
+/* menu list */
+.our-menu h1 {
+  color:#4cbb17;
+  text-align: center;
+  padding: 1.4rem 7%;
+  font-size: 3rem;
+}
+.our-menu h1 span {
+  color:#fff;
+}
+
+.our-menu .menu-items {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+
+} 
+.our-menu .menu-items p {
+  font-size: 1.5rem;
+
+}
+
+.our-menu .menu-list {
+  gap: 70px;
+}
+
+.our-menu .menu-text {
+  flex-direction: column;
+}
+
+.our-menu .menu-items img {
+  height: auto;
+  border-radius: 12px;
+  margin-left: 20px;
+  margin: 20px;
+}
+.our-menu .menu-items img:hover{
+  transform: scale(1.1);
+}
+.our-menu .menu-items h3{
+  margin-top: 20px;
+  color: #4cbb17;
+  font-size: 2.5rem;
+}
+
 
 /*Media Queries*/
 
