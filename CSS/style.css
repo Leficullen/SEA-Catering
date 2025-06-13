@@ -16,8 +16,8 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: #000;
   color: #ffffff;
-  min-height: 2000px;
   padding-top: 50px;
+  overflow:scroll;
 }
 
 /*Navbar*/
@@ -218,7 +218,7 @@ body {
 .subscription {
   padding: 60px 20px;
   text-align: center;
-  background-image: url(../img/header-bg.jpg) !important;
+  background-image: url(../img/subscription-bg2.jpg) !important;
   background-size: cover;
   background-repeat: no-repeat;   
   background-position: center;
@@ -227,7 +227,7 @@ body {
   border: 2px solid red;
   height: auto;
   width: 100%;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .subscription .subscribe {
@@ -245,6 +245,7 @@ body {
   background-color: #111;
   border-radius: 12px;
   text-align: center;
+  overflow: auto;
 }
 .subscription form {
   display: flex;
@@ -361,7 +362,7 @@ body {
 .our-menu h1 {
   color:#4cbb17;
   text-align: center;
-  padding: 1.4rem 7%;
+  padding: 6rem 7% 1.4rem;
   font-size: 3rem;
 }
 .our-menu h1 span {
@@ -375,7 +376,8 @@ body {
 
 } 
 .our-menu .menu-items p {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  margin-right: 50px;
 
 }
 
@@ -385,6 +387,7 @@ body {
 
 .our-menu .menu-text {
   flex-direction: column;
+  text-align: justify;
 }
 
 .our-menu .menu-items img {
@@ -461,4 +464,8 @@ body {
   html {
     font-size: 55%;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
