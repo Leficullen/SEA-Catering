@@ -432,11 +432,41 @@ body {
   display: flex;
   background-color: #222;
   flex-wrap: wrap;
+  align-items: center;
 }
 .contact .row .map {
   flex: 1 1 45rem;
   width: 100%;
   object-fit: cover;
+  height: 450px;
+}
+.contact p {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.contact .row .contact-details {
+  padding: 5rem 2rem;
+}
+.contact .contact-details h3 {
+  font-size: 2rem;
+}
+
+.contact .contact-details p {
+  font-size: 1.5rem;
+}
+
+.contact .contact-details .btn {
+  border-radius: 5px;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  color: #fff;
+  background-color: #4cbb17;
+  font-size: 1.3rem;
+}
+.contact .contact-details .btn:hover {
+  background-color: #fff;
+  color: #4cbb17;
 }
 /*Media Queries*/
 
@@ -536,6 +566,18 @@ body {
   .about-us .about-us-image img {
     width: 350px;
     height: 80px;
+  }
+  .contact .contact-details {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    align-items: center;
+    flex-direction:column;
+    text-align:center;
+  }
+  .contact .row {
+    flex-direction:column;
   }
 }
 
