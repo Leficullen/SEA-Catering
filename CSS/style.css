@@ -418,6 +418,15 @@ body {
   aspect-ratio: 16/9;
   object-fit: cover;
 }
+.about-us p {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  margin-left: 35px;
+  margin-right: 35px;
+  text-align: justify;
+  display: block;
+  align-items: center;
+}
 /*Media Queries*/
 
 /*Laptop screen*/
