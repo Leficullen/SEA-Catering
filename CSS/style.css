@@ -202,7 +202,7 @@ body {
 }
 .video-card video:hover{
   transform: scale(1.1);
-  transition: transform 1.1 ease;
+  transition: transform 0.5s ease-in-out;
 
 }
 
@@ -359,13 +359,13 @@ body {
 }
 
 /* menu list */
-.our-menu h1, .about-us h1, .contact h1 {
+.our-menu h1, .about-us h1, .contact h1, .testimoni h1 {
   color:#4cbb17;
   text-align: center;
   padding: 6rem 7% 1.4rem;
   font-size: 3rem;
 }
-.our-menu h1 span, .about-us h1 span, .contact h1 span {
+.our-menu h1 span, .about-us h1 span, .contact h1 span, .testimoni h1 span {
   color:#fff;
 }
 
@@ -398,6 +398,7 @@ body {
 }
 .our-menu .menu-items img:hover{
   transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
 }
 .our-menu .menu-items h3{
   margin-top: 20px;
@@ -467,6 +468,57 @@ body {
 .contact .contact-details .btn:hover {
   background-color: #fff;
   color: #4cbb17;
+}
+
+/* testimoni section */
+.testimoni .user-testi {
+  display: flex;
+  text-align: left;
+  align-items: left;
+  flex-direction: column;
+  margin-left: 50px;
+  margin-right: 50px;
+  
+}
+
+.testimoni .testi-form1 {
+  flex-direction: column;
+  display: flex;
+  font-size: 1.2rem ;
+  font-weight: bold;
+  color: #4cbb17;
+}
+.testimoni .testi-form1 input {
+  background-color: #fff;
+  border-radius: 8px;
+  height:30px;
+  width: 300px;
+  color: #000;
+  padding: 0.8rem 1rem;
+  font-family: "poppins";
+}
+.testimoni .testi-form2{
+  flex-direction: column;
+  display: flex;
+  font-size: 1.2rem ;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #4cbb17;
+  flex-wrap: wrap;
+}
+.testimoni .testi-form2 textarea {
+  background-color: #fff;
+  border-radius: 8px;
+  height:100px;
+  width: 100%;
+  max-width: 500px;
+  color:#000;
+  padding: 0.8rem 1rem;
+  resize: vertical;
+  box-sizing: border-box;
+  font-family:"poppins";
+  display: flex;
+  flex-wrap: wrap;
 }
 /*Media Queries*/
 
