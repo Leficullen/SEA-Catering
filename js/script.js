@@ -13,3 +13,22 @@ document.addEventListener('click', function(e) {
         navbarNav.classList.remove('active')
     }
 })
+
+//pop-up
+const openButton = document.querySelectorAll(".see-details");
+const closeButton = document.querySelectorAll(".close-popup");
+
+openButton.forEach(button => {
+  button.addEventListener("click", function (e) {
+    e.preventDefault ();
+    const popupId = button.getAttribute("data-popup");
+    const popup = document.getElementById(popupId);
+    popup.classList.add("open-popup");
+  });
+});
+
+closeButton.forEach(button => {
+  button.addEventListener("click", function () {
+    button.closest(".pop-up").classList.remove("open-popup");
+  });
+});

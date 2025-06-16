@@ -81,35 +81,53 @@
           <div class="menu-text">
           <h3>Protein Plan</h3>
           <p>The Protein Plan fuels your body with high-protein meals perfect for active lifestyles and muscle growth. Carefully crafted with lean meats, plant-based proteins, and balanced carbs. Great for fitness enthusiasts and anyone looking to stay energized throughout the day.</p>
+          <button type="submit" class="see-details" data-popup="pop-up-protein" onclick="openPopup('pop-up-protein')">See Details</button>
           </div>
-          <a href="#pop-up" class="see-details">See Details</a>
-          
         </div>
         <div class="menu-items">
           <img src="img/diet-plan.jpg" alt="diet-plan" style="max-width:350px">
           <div class="menu-text">
             <h3>Diet Plan</h3>
             <p>Our Diet Plan is specially designed for those aiming to lose or maintain weight without sacrificing flavor. Each meal is portion-controlled and calorie-conscious, using fresh and nutritious ingredients. Ideal for anyone who wants to eat clean and feel lighter every day</p>
+            <button type="submit" class="see-details" data-popup="pop-up-diet" onclick="openPopup('pop-up-diet')">See Details</button>
           </div>
         </div>
         <div class="menu-items">
           <img src="img/royal-plan.jpg" alt="diet-plan" style="max-width:350px">
           <div class="menu-text">
             <h3>Royal Plan</h3>
-            <p>The Royal Plan offers a premium dining experience with gourmet healthy meals delivered to your door. It combines luxury ingredients, rich flavors, and optimal nutrition in every bite. Perfect for those who want the best of both health and indulgence.
-</p>
+            <p>The Royal Plan offers a premium dining experience with gourmet healthy meals delivered to your door. It combines luxury ingredients, rich flavors, and optimal nutrition in every bite. Perfect for those who want the best of both health and indulgence.</p>
+            <button type="submit" class="see-details" data-popup="pop-up-royal" onclick="openPopup('pop-up-royal')">See Details</button>
           </div>
       </div>
-      <div class="pop-up" id="pop-up">
+      <div class="pop-up" id="pop-up-protein">
         <div class="pop-up-container">
+          <button type="button" class="close-popup" onclick="closePopup()">&times;</button>
           <img src="img/protein-plan.jpg">
           <h3>Protein Plan</h3>
           <p class="product-desc">The Protein Plan fuels your body with high-protein meals perfect for active lifestyles and muscle growth. Carefully crafted with lean meats, plant-based proteins, and balanced carbs. Great for fitness enthusiasts and anyone looking to stay energized throughout the day.</p>
-          <p class="product-content"> Calories: approx. 550–650 kcal<br>
-  Protein: 35–50g per serving</p>
-          <button href="subscription.html" class="pop-up-btn">Subscribe Now!</button>
-
-
+          <p class="product-content"> Calories: approx. 550–650 kcal<br>Protein: 35–50g per serving</p>
+          <a href="subscription.html" class="pop-up-btn">Subscribe Now!</a>
+        </div>
+      </div>
+      <div class="pop-up" id="pop-up-diet">
+        <div class="pop-up-container">
+          <button type="button" class="close-popup" onclick="closePopup()">&times;</button>
+          <img src="img/diet-plan.jpg">
+          <h3>Diet Plan</h3>
+          <p class="product-desc">Our Diet Plan is specially designed for those aiming to lose or maintain weight without sacrificing flavor. Each meal is portion-controlled and calorie-conscious, using fresh and nutritious ingredients. Ideal for anyone who wants to eat clean and feel lighter every day.</p>
+          <p class="product-content">Calories: approx. 400–500 kcal <br>High fiber, low sugar & fat </p>
+          <a href="subscription.html" class="pop-up-btn">Subscribe Now!</a>
+        </div>
+      </div>
+      <div class="pop-up" id="pop-up-royal">
+        <div class="pop-up-container">
+          <button type="button" class="close-popup" onclick="closePopup()">&times;</button>
+          <img src="img/royal-plan.jpg">
+          <h3>Protein Plan</h3>
+          <p class="product-desc">The Protein Plan fuels your body with high-protein meals perfect for active lifestyles and muscle growth. Carefully crafted with lean meats, plant-based proteins, and balanced carbs. Great for fitness enthusiasts and anyone looking to stay energized throughout the day.</p>
+          <p class="product-content"> Calories: approx. 550–650 kcal<br>Protein: 35–50g per serving</p>
+          <a href="subscription.html" class="pop-up-btn">Subscribe Now!</a>
         </div>
       </div>
     </main>
