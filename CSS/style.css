@@ -689,6 +689,15 @@ body {
 .login a {
   color: #4cbb17;
 }
+.login .error-message {
+  padding: 12px;
+  background: #f8d7da;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #a42834;
+  text-align: center;
+  margin-bottom: 20px;
+}
 /*Media Queries*/
 
 /*Laptop screen*/
