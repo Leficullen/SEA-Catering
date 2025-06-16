@@ -622,6 +622,72 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+/* login */
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: 
+  color:#4cbb17
+}
+.login .container {
+  margin: 0 15px;
+}
+.login .form-box{
+  width:100%;
+  max-width: 450px;
+  padding: 30px;
+  background: #111;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+.login .form-box.active {
+  display: block;
+}
+.login .form-box input,select {
+  border-radius: 2px;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  padding: 5px;
+  font-family: "poppins";
+  color: #444;  
+}
+.login h2 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.login button {
+  font-size: 1.3rem;
+  color: #fff;
+  background-color: #4cbb17;
+  border-radius: 3px;
+  padding: 12px;
+  width:100%;
+  text-align: center;
+  border:none;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 20px;
+  transition: 0.5s;
+}
+.login button:hover {
+  background-color: #fff;
+  color: #4cbb17;
+}
+.login p {
+  text-align: center;
+  font-size: 1rem;
+  color: #fff;
+}
+.login a {
+  color: #4cbb17;
+}
 /*Media Queries*/
 
 /*Laptop screen*/
@@ -640,11 +706,12 @@ body {
     font-size: 62.5%;
   }
   .about-us .about-us-image img {
-    max-width: 90%;
+    max-width: 80%;
     object-fit: contain;
-    padding: 0 20px;
-    border-radius: 10px;
-
+    padding: 0 ;
+    object-fit: cover;
+    width: 100%;
+  
   }
 
   #menu {

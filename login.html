@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap"/>
+    <style>
+      body {
+        font-family: 'poppins',sans-serif;
+      }
+    </style>
+</head>
+<body class="login">
+    <div class="container">
+        <div class="form-box active" id="login-form">
+            <form action="">
+                <h2>Login</h2>
+                <input type="email" name="email" placeholder="E-Mail">
+                <input type="password" name="password" placeholder="Password">
+                <button type="submit" name="login">Login</button>
+                <p>Don't have an acoount? <a href="#">Register</a></p>
+            </form>
+        </div>
+        <div class="form-box" id="register-form">
+            <form action="">
+                <h2>Register</h2>
+                <input type="email" name="email" placeholder="E-Mail">
+                <input type="password" name="password" placeholder="Password">
+                <select name="role">
+                  <option value="">Select Role</option>
+                  <option value="">Admin</option>
+                  <option value="">User</option>
+                </select>
+                <button type="submit" name="login">Login</button>
+                <p>Already have an acoount? <a href="#">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    
+</body>
+</html>
