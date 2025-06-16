@@ -628,8 +628,9 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: 
-  color:#4cbb17
+  background-image: url(../img/login-bg.jpg);
+  background-size:100%;
+  color:#4cbb17;
 }
 .login .container {
   margin: 0 15px;
