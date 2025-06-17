@@ -4,10 +4,14 @@ session_start();
 require_once 'config.php';
 
 if (isset($_POST['register'])) {
-    $name = $_POST['register'];
+    $name = $_POST['name'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $role = $_POST['role'];
+    $role = 'user';
+
+    if (isset($_POST['admin_code']) && $_POST['admin_code'] === '27087736' ) {
+        $role = 'admin';
+    }
 
     $checkEmail = $conn->query("SELECT email FROM userss WHERE email = '$email'");
     if ($checkEmail->num_rows > 0) {
@@ -15,6 +19,20 @@ if (isset($_POST['register'])) {
         $_SESSION['active_form'] = 'register';
     } else {
         $conn->query("INSERT INTO userss (name, email, password, role) VALUES ('$name', '$email', '$password', '$role') ");
+    }
+
+    $admin_code = $_POST['admin_code'];
+    if ($admin_code === '27087736') {
+        $role = 'admin' ;
+    } else {
+        $role = 'user' ;
+    }
+
+    if(!preg_match('(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_].{8,}', $password)) {
+        $_SESSION['register_error'] = 'Password must be at least 8 characters long and include uppercase, lowercase, number and symbol';
+        $_SESSION['active_form'] = 'register';
+        header("Location: login.php");
+        exit();
     }
 
     header("Location: login.php");
