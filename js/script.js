@@ -37,3 +37,16 @@ function showForm(formId) {
   document.querySelectorAll(".form-box").forEach(form => form.classList.remove("active"));
   document.getElementById(formId).classList.add("active");
 }
+
+//total price
+const mealPrices = {
+  "Protein Plan": 40000, "Diet Plan": 30000, "Royal Plan": 60000 };
+const mealRadios = document.querySelectorAll('input[name="meal_plan"]');
+const dayCheckboxes =
+document.querySelectorAll('input[name="delivery_days[]"]');
+const totalPriceDisplay = document.getElementsById('total_price_display');
+const totalPriceHidden = document.getElementById('total_price');
+
+function calculateTotal() {
+  
+}

@@ -79,15 +79,25 @@ if (!isset($_SESSION['email'])) {
 					</div>
 					<div class="input-box">
 						<span class="details">Meal Plan</span>
-						<label><input type="radio" name="meal-plan" value="Protein Plan">Protein Plan</label><br>
-						<label><input type="radio" name="meal-plan" value="Diet Plan">Diet Plan</label><br>
-						<label><input type="radio" name="meal-plan" value="Royal Plan">Royal Plan</label><br>
+						<label><input type="radio" name="meal-plan" value="Protein Plan ">Protein Plan (Rp 40.000)</label><br>
+						<label><input type="radio" name="meal-plan" value="Diet Plan">Diet Plan (Rp. 30.000)</label><br>
+						<label><input type="radio" name="meal-plan" value="Royal Plan">Royal Plan (Rp 60.000)</label><br>
+						<span class="details">Meal Type</span>
+						<label><input type="checkbox" name="meal-type" value="breakfast">Breakfast</label><br>
+						<label><input type="checkbox" name="meal-type" value="lunch">Lunch</label><br>
+						<label><input type="checkbox" name="meal-type" value="dinner">Dinner</label><br>
 					</div>
 					<div class="input-box full-width">
 						<span class="details">Gender</span>
 						<label><input type="radio" name="gender" value="Male">Male</label><br>
 						<label><input type="radio" name="gender" value="Female">Female</label><br>
 					</div>
+					<div class="input-box">
+						<span class="details">Total Price (Rp)</span>
+						<input type="text" id="total_price_display" disabled>
+						<input type="hidden" id="total_price" name="total_price" disabled>
+					</div>
+
 				</div>
 					<button type="submit" class="cta">Subscribe</button>
 			</form>
