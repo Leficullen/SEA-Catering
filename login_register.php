@@ -6,37 +6,39 @@ require_once 'config.php';
 if (isset($_POST['register'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $role = 'user';
+    $passwordRaw = $_POST['password'];
+    $role = $_POST['role'];
+    $admin_code = $_POST['admin_code']??'';
 
-    if (isset($_POST['admin_code']) && $_POST['admin_code'] === '27087736' ) {
-        $role = 'admin';
-    }
-
-    $checkEmail = $conn->query("SELECT email FROM userss WHERE email = '$email'");
-    if ($checkEmail->num_rows > 0) {
-        $_SESSION['register_error'] = 'Email is already registered!';
-        $_SESSION['active_form'] = 'register';
-    } else {
-        $conn->query("INSERT INTO userss (name, email, password, role) VALUES ('$name', '$email', '$password', '$role') ");
-    }
-
-    $admin_code = $_POST['admin_code'];
-    if ($admin_code === '27087736') {
-        $role = 'admin' ;
-    } else {
-        $role = 'user' ;
-    }
-
-    if(!preg_match('(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_].{8,}', $password)) {
+    if (!preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/', $passwordRaw)) {
         $_SESSION['register_error'] = 'Password must be at least 8 characters long and include uppercase, lowercase, number and symbol';
         $_SESSION['active_form'] = 'register';
         header("Location: login.php");
         exit();
     }
 
+    if($role === 'admin' && $admin_code !== '27087736') {
+        $_SESSION['register_error'] = 'Invalid Admin Code';
+        $_SESSION['active_form'] = 'register';
+        header("Location: login.php");
+        exit();
+    }
+
+    $password = password_hash($passwordRaw, PASSWORD_DEFAULT);
+
+    $checkEmail = $conn->query("SELECT email FROM userss WHERE email = '$email'");
+    if ($checkEmail->num_rows > 0) {
+        $_SESSION['register_error'] = 'Email is already registered!';
+        $_SESSION['active_form'] = 'register';
+        header("Location: login.php");
+        exit();
+    } 
+
+    $conn->query("INSERT INTO userss (name, email, password, role) VALUES ('$name', '$email', '$password', '$role') ");
+
     header("Location: login.php");
-    exit(); 
+    exit();
+
 }
 
 if (isset($_POST['login'])) {

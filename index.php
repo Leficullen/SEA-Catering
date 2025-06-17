@@ -26,13 +26,12 @@
     <div class="navbar-nav">
       <a href="#home">Home</a>
       <a href="#our-menu">Menu</a>
-      <a href="subscription.html">Subscription</a>
+      <a href="subscription.php">Subscription</a>
       <a href="#contact">Contact Us</a>
     </div>
 
     <div class="navbar-extra">
-      <a href="#" id="search"><i data-feather="search"></i>></i></a>
-      <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i>></i></a>
+      <a href="auth_redirect.php" id="dashboard"><i data-feather="user"></i>></i></a>
       <a href="#" id="menu"><i data-feather="menu"></i>></i></a>
 
   </nav>
