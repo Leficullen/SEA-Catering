@@ -33,7 +33,6 @@
     <div class="navbar-extra">
       <a href="auth_redirect.php" id="dashboard"><i data-feather="user"></i>></i></a>
       <a href="#" id="menu"><i data-feather="menu"></i>></i></a>
-
   </nav>
 
   <!--Hero Section -->

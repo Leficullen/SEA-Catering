@@ -711,6 +711,34 @@ body {
   }
 }
 
+/* user page */
+.user_page h1 {
+  font-size: 2.5rem;
+  margin: 50px auto auto 20px;
+}
+.user_page h1 span {
+  color: #4cbb17;
+}
+.user_page .box p {
+  margin: 3px 22px;
+  font-size: 1.2rem;
+}
+.user_page .logout-btn {
+  position: absolute;
+  background-color: red;
+  color: #fff;
+  right:20px;
+  top:120px;
+  padding: 5px 10px;
+  font-size: 1rem;
+  border-radius: 2px;
+}
+.user_page .cancel-section button {
+  color:#4cbb17;
+  position:absolute;
+  left: 30px;
+  top:350px;
+}
 /*Tablet screen*/
 @media (max-width: 768px) {
   html {
