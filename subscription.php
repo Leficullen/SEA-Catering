@@ -5,6 +5,9 @@ if (!isset($_SESSION['email'])) {
 	header("Location: login.php");
 	exit();
 }
+
+$total_price = isset($_POST['total_price']) ? $_POST['total_price'] : 0;
+
 ?>
 
 <!DOCTYPE html>
@@ -35,17 +38,17 @@ if (!isset($_SESSION['email'])) {
     <a href="#" class ="navbar-logo">SEA<span>-Catering</span>.</a>
 
     <div class="navbar-nav">
-      <a href="index.html">Home</a>
-      <a href="index.html#our-menu">Menu</a>
-      <a href="#subscription">Subscription</a>
-      <a href="#contact">Contact Us</a>
+      <a href="index.php">Home</a>
+      <a href="index.php#our-menu">Menu</a>
+      <a href="subscription.php">Subscription</a>
+      <a href="index.php#contact">Contact Us</a>
     </div>
 
     <div class="navbar-extra">
-      <a href="#" id="search"><i data-feather="search"></i>></i></a>
-      <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i>></i></a>
+      <a href="auth_redirect.php" id="dashboard"><i data-feather="user"></i>></i></a>
       <a href="#" id="menu"><i data-feather="menu"></i>></i></a>
   </nav>
+
   <section class="subscription" id="subscription">
 		<div class="form-wrapper">
 			<h2 class="subscribe">Subscribe<span> Now!</span></h2>
@@ -95,7 +98,7 @@ if (!isset($_SESSION['email'])) {
 					<div class="input-box">
 						<span class="details">Total Price (Rp)</span>
 						<input type="text" id="total_price_display" disabled>
-						<input type="hidden" id="total_price" name="total_price" disabled>
+						<input type="hidden" id="total_price" name="total_price" >
 					</div>
 
 				</div>

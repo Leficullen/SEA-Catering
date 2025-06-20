@@ -44,9 +44,26 @@ const mealPrices = {
 const mealRadios = document.querySelectorAll('input[name="meal_plan"]');
 const dayCheckboxes =
 document.querySelectorAll('input[name="delivery_days[]"]');
-const totalPriceDisplay = document.getElementsById('total_price_display');
+const totalPriceDisplay = document.getElementById('total_price_display');
 const totalPriceHidden = document.getElementById('total_price');
 
 function calculateTotal() {
+  const selectedPlan =
+document.querySelector('input[name="meal_plan"]:checked');
+  if (!selectedPlan) return;
+
+  const planPrice = mealPrices[selectedPlan.value];
+  const selectedDays = Array.from(dayCheckboxes).filter(cb=>
+cb.checked).length;
   
+const total = planPrice * selectedDays;
+
+totalPriceDisplay.value = total.toLocaleString('id-ID');
+totalPriceHidden.value = total;
 }
+mealRadios.forEach(radio => {
+  radio.addEventListener('change', calculateTotal);
+})
+dayCheckboxes.forEach(cb => {
+  cb.addEventListener('change', calculateTotal);
+})

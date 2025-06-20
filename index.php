@@ -1,3 +1,8 @@
+<?php
+session_start();
+$is_logged_in = isset($_SESSION['email']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -104,7 +109,7 @@
           <h3>Protein Plan</h3>
           <p class="product-desc">The Protein Plan fuels your body with high-protein meals perfect for active lifestyles and muscle growth. Carefully crafted with lean meats, plant-based proteins, and balanced carbs. Great for fitness enthusiasts and anyone looking to stay energized throughout the day.</p>
           <p class="product-content"> Calories: approx. 550–650 kcal<br>Protein: 35–50g per serving</p>
-          <a href="subscription.html" class="pop-up-btn">Subscribe Now!</a>
+          <a href="subscription.php" class="pop-up-btn">Subscribe Now!</a>
         </div>
       </div>
       <div class="pop-up" id="pop-up-diet">
@@ -114,7 +119,7 @@
           <h3>Diet Plan</h3>
           <p class="product-desc">Our Diet Plan is specially designed for those aiming to lose or maintain weight without sacrificing flavor. Each meal is portion-controlled and calorie-conscious, using fresh and nutritious ingredients. Ideal for anyone who wants to eat clean and feel lighter every day.</p>
           <p class="product-content">Calories: approx. 400–500 kcal <br>High fiber, low sugar & fat </p>
-          <a href="subscription.html" class="pop-up-btn">Subscribe Now!</a>
+          <a href="subscription.php" class="pop-up-btn">Subscribe Now!</a>
         </div>
       </div>
       <div class="pop-up" id="pop-up-royal">
@@ -124,7 +129,7 @@
           <h3>Protein Plan</h3>
           <p class="product-desc">The Protein Plan fuels your body with high-protein meals perfect for active lifestyles and muscle growth. Carefully crafted with lean meats, plant-based proteins, and balanced carbs. Great for fitness enthusiasts and anyone looking to stay energized throughout the day.</p>
           <p class="product-content"> Calories: approx. 550–650 kcal<br>Protein: 35–50g per serving</p>
-          <a href="subscription.html" class="pop-up-btn">Subscribe Now!</a>
+          <a href="subscription.php" class="pop-up-btn">Subscribe Now!</a>
         </div>
       </div>
     </main>

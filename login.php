@@ -1,6 +1,10 @@
 <?php
 
 session_start();
+if (isset($_SESSION['email'])) {
+    header("Location: user_page.php");
+    exit();
+}
 
 $errors = [
     'login' => $_SESSION['login_error'] ?? '',

@@ -66,9 +66,6 @@ $_SESSION['active_form'] = 'login';
 header("Location: login.php");
 exit();
 
-$_SESSION['email'] = $row['email'];
-$_SESSION['name'] = $row['name'];
-
 ?>
 
 
