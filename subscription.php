@@ -8,6 +8,7 @@ if (!isset($_SESSION['email'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	$email = $_SESSION['email'];
     $full_name = $_POST['full_name'] ?? '';
     $phone_number = $_POST['phone_number'] ?? '';
     $address = $_POST['address'] ?? '';
@@ -18,10 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $gender = $_POST['gender'] ?? '';
 	$total_price = $_POST['total_price'] ?? 0;
 
-	$stmt = $conn->prepare("INSERT INTO subscription (full_name, phone_number, `address`, allergies, delivery_days, meal_plan, meal_type, gender, total_price, `status`, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'active', NOW())");
+	$stmt = $conn->prepare("INSERT INTO subscription (full_name, email, phone_number, `address`, allergies, delivery_days, meal_plan, meal_type, gender, total_price, `status`, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'active', NOW())");
 	
-	$stmt->bind_param("ssssssssi", 
-    $full_name, $phone_number, $address, $allergies,
+	$stmt->bind_param("sssssssssi", 
+    $full_name, $email, $phone_number, $address, $allergies,
     $delivery_days_str, $meal_plan, $meal_type_str,
     $gender, $total_price );
 

@@ -724,6 +724,38 @@ body {
   margin: 3px 22px;
   font-size: 1.2rem;
 }
+
+.user_page .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #222;
+  color: white;
+  border-radius: 10px;
+  flex-wrap: wrap;  
+  justify-content: space-between;
+  row-gap:30px;
+}
+.user_page .subscription-box {
+  background-color: #000;
+  flex-direction: column;
+  display: flex;
+  width: 50%;
+  padding: 10px;
+  border-radius: 5px;
+}
+.user_page .pause-box {
+  background-color: #000;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 10px;
+  height: 50%;
+}
+
+
 .user_page .logout-btn {
   position: absolute;
   background-color: red;
@@ -734,11 +766,8 @@ body {
   font-size: 1rem;
   border-radius: 2px;
 }
-.user_page .cancel-section button {
+.user_page .cancel-box button {
   color:#4cbb17;
-  position:absolute;
-  left: 30px;
-  top:350px;
 }
 /*Tablet screen*/
 @media (max-width: 768px) {

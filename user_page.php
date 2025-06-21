@@ -58,33 +58,35 @@ if ($result && mysqli_num_rows($result) > 0) {
         <p>This is an <span>User Page </span> </p>
     </div>
     <button class="logout-btn" onclick="window.location.href='logout.php'">Logout</button>
-    <div class="dashboard">
+    <div class="row">
       <?php if ($subscription): ?>
-      <div class="subscription-card">
+      <div class="subscription-box">
         <p>Viewing Your Subscription: </p>  
-        <h2><?=htmlspecialchars($subscription['plan_name']) ?></h2>
-        <h3><strong>Meal Types: </strong> <?=htmlspecialchars($subscription['meal_types']) ?></h3>
+        <h2><?=htmlspecialchars($subscription['meal_plan']) ?></h2>
+        <h3><strong>Meal Types: </strong> <?=htmlspecialchars($subscription['meal_type']) ?></h3>
         <h3><strong>Delivery Days: </strong> <?=htmlspecialchars($subscription['delivery_days']) ?></h3> 
-        <h3><strong>Total Price: </strong> <?=htmlspecialchars($subscription['total_price']) ?></h3> 
+        <h3><strong>Total Price (/day): Rp</strong> <?=htmlspecialchars($subscription['total_price']) ?></h3> 
         <h3><strong>Status: </strong> <span class="active-status"><?=htmlspecialchars($subscription['status']) ?></span></h3>
         <?php else: ?>
           <p>You have no active subscription yet</p>
         <?php endif; ?>
-        <div class="pause-section">
-          <form action="pause_subscription.php" method="POST">
-            <h3><strong>Pause Subscription: </strong></h3><br><br>
-            <input type="date" name="pause_start" required>
-            <input type="date" name="pause_end" required>
-            <input type="hidden" name="subscription_id" value="<?= $subscription['id'] ?>" >
-            <button type="submit" class="pause-btn">Pause</button>
-          </form>
-        </div>
-        <div class="cancel-section">
-          <form action="cancel_subscription.php" method="POST" onsubmit="return confirm('Are you sure you want to cancel your subscription permanently');">
-            <input type="hidden" name="subscription_id" value="<?= $subscription['id'] ?>">
-            <button type="submit" class="cancel-btn">Cancel Subscription</button>
-          </form> 
-        </div>
+      </div>
+      <div class="pause-box">
+        <form action="pause_subscription.php" method="POST">
+          <h3><strong>Pause Subscription: </strong></h3><br><br>
+          <input type="date" name="pause_start" required>
+          <input type="date" name="pause_end" required>
+          <input type="hidden" name="subscription_id" value="<?= $subscription['id'] ?>" >
+          <button type="submit" class="pause-btn">Pause</button>
+          <br><br>
+          
+        </form>
+      </div>
+      <div class="cancel-box">
+        <form action="cancel_subscription.php" method="POST" onsubmit="return confirm('Are you sure you want to cancel your subscription permanently');">
+          <input type="hidden" name="subscription_id" value="<?= $subscription['id'] ?>">
+          <button type="submit" class="cancel-btn">Cancel Subscription</button>
+        </form> 
       </div>
     </div>
 
