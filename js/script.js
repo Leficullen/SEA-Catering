@@ -40,30 +40,31 @@ function showForm(formId) {
 
 //total price
 const mealPrices = {
-  "Protein Plan": 40000, "Diet Plan": 30000, "Royal Plan": 60000 };
+  "Protein Plan": 40000,
+  "Diet Plan": 30000,
+  "Royal Plan": 60000
+};
+
 const mealRadios = document.querySelectorAll('input[name="meal_plan"]');
-const dayCheckboxes =
-document.querySelectorAll('input[name="delivery_days[]"]');
+const dayCheckboxes = document.querySelectorAll('input[name="delivery_days[]"]');
+const mealTypeCheckboxes = document.querySelectorAll('input[name="meal_type[]"]');
 const totalPriceDisplay = document.getElementById('total_price_display');
 const totalPriceHidden = document.getElementById('total_price');
 
 function calculateTotal() {
-  const selectedPlan =
-document.querySelector('input[name="meal_plan"]:checked');
+  const selectedPlan = document.querySelector('input[name="meal_plan"]:checked');
   if (!selectedPlan) return;
 
   const planPrice = mealPrices[selectedPlan.value];
-  const selectedDays = Array.from(dayCheckboxes).filter(cb=>
-cb.checked).length;
-  
-const total = planPrice * selectedDays;
+  const selectedDays = Array.from(dayCheckboxes).filter(cb => cb.checked).length;
+  const selectedMealTypes = Array.from(mealTypeCheckboxes).filter(cb => cb.checked).length;
 
-totalPriceDisplay.value = total.toLocaleString('id-ID');
-totalPriceHidden.value = total;
+  const total = planPrice * selectedDays * selectedMealTypes;
+
+  totalPriceDisplay.value = total.toLocaleString('id-ID');
+  totalPriceHidden.value = total;
 }
-mealRadios.forEach(radio => {
-  radio.addEventListener('change', calculateTotal);
-})
-dayCheckboxes.forEach(cb => {
-  cb.addEventListener('change', calculateTotal);
-})
+
+[...mealRadios, ...dayCheckboxes, ...mealTypeCheckboxes].forEach(el =>
+  el.addEventListener('change', calculateTotal)
+);

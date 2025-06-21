@@ -1,13 +1,32 @@
 <?php
-
+require 'config.php';
 session_start();
+
 if (!isset($_SESSION['email'])) {
 	header("Location: login.php");
 	exit();
 }
 
-$total_price = isset($_POST['total_price']) ? $_POST['total_price'] : 0;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $full_name = $_POST['full_name'] ?? '';
+    $phone_number = $_POST['phone_number'] ?? '';
+    $address = $_POST['address'] ?? '';
+    $allergies = $_POST['allergies'] ?? '';
+	$delivery_days_str = isset($_POST['delivery_days']) ? implode(', ',$_POST['delivery_days']) : '';
+    $meal_plan = $_POST['meal_plan'] ?? '';
+    $meal_type_str = isset($_POST['meal_type']) ? implode(', ',$_POST['meal_type']) : '';
+    $gender = $_POST['gender'] ?? '';
+	$total_price = $_POST['total_price'] ?? 0;
+}
 
+$sql = $conn->query("INSERT INTO subscription (full_name, phone_number, `address`, allergies, delivery_days, meal_plan, meal_type, gender, total_price, `status`, created_at)
+        VALUES ('$full_name', '$phone_number', '$address', '$allergies', '$meal_plan', '$delivery_days_str', '$meal_type_str', '$gender', '$total_price', 'active', NOW()");
+
+if ($conn->query($sql) === TRUE) {
+    echo "successed";
+} else {
+	echo "failed" . $conn->error;
+}
 ?>
 
 <!DOCTYPE html>
@@ -52,46 +71,46 @@ $total_price = isset($_POST['total_price']) ? $_POST['total_price'] : 0;
   <section class="subscription" id="subscription">
 		<div class="form-wrapper">
 			<h2 class="subscribe">Subscribe<span> Now!</span></h2>
-			<form action="#">
+			<form action="subscription.php" method="POST">
 				<div class="user-details">
 					<div class="input-box">
 						<span class="details">Full Name</span>
-						<input type="text" required>
+						<input type="text" name="full_name" required>
 					</div>
 					<div class="input-box">
 						<span class="details">Active Phone Number</span>
-						<input type="num" required>
+						<input type="num" name="phone_number" required>
 					</div>
 					<div class="input-box">
 						<span class="details">Address</span>
-						<input type="text" required>
+						<input type="text" name="address" required>
 					</div>
 					<div class="input-box">
 						<span class="details">Allergies</span>
-						<input type="text" required>
+						<input type="text" name="allergies" required>
 					</div>
 					<div class="input-box">
-						<span class="details">Delivery Days</span>
-						<label><input type="checkbox" name="delivery-days" value="Monday">Monday</label><br>
-						<label><input type="checkbox" name="delivery-days" value="Tuesday">Tuesday</label><br>
-						<label><input type="checkbox" name="delivery-days" value="Wednesday">Wednesday</label><br>
-						<label><input type="checkbox" name="delivery-days" value="Thursday">Thursday</label><br>
-						<label><input type="checkbox" name="delivery-days" value="Friday">Friday</label><br>
-						<label><input type="checkbox" name="delivery-days" value="Saturday">Saturday</label><br>
-						<label><input type="checkbox" name="delivery-days" value="Sunday">Sunday	</label><br>
+						<span class="details" Required>Delivery Days</span>
+						<label><input type="checkbox" name="delivery_days[]" value="Monday">Monday</label><br>
+						<label><input type="checkbox" name="delivery_days[]" value="Tuesday">Tuesday</label><br>
+						<label><input type="checkbox" name="delivery_days[]" value="Wednesday">Wednesday</label><br>
+						<label><input type="checkbox" name="delivery_days[]" value="Thursday">Thursday</label><br>
+						<label><input type="checkbox" name="delivery_days[]" value="Friday">Friday</label><br>
+						<label><input type="checkbox" name="delivery_days[]" value="Saturday">Saturday</label><br>
+						<label><input type="checkbox" name="delivery_days[]" value="Sunday">Sunday	</label><br>
 					</div>
 					<div class="input-box">
-						<span class="details">Meal Plan</span>
-						<label><input type="radio" name="meal-plan" value="Protein Plan ">Protein Plan (Rp 40.000)</label><br>
-						<label><input type="radio" name="meal-plan" value="Diet Plan">Diet Plan (Rp. 30.000)</label><br>
-						<label><input type="radio" name="meal-plan" value="Royal Plan">Royal Plan (Rp 60.000)</label><br>
+						<span class="details" Required>Meal Plan</span>
+						<label><input type="radio" name="meal_plan" value="Protein Plan ">Protein Plan (Rp 40.000)</label><br>
+						<label><input type="radio" name="meal_plan" value="Diet Plan">Diet Plan (Rp. 30.000)</label><br>
+						<label><input type="radio" name="meal_plan" value="Royal Plan">Royal Plan (Rp 60.000)</label><br>
 						<span class="details">Meal Type</span>
-						<label><input type="checkbox" name="meal-type" value="breakfast">Breakfast</label><br>
-						<label><input type="checkbox" name="meal-type" value="lunch">Lunch</label><br>
-						<label><input type="checkbox" name="meal-type" value="dinner">Dinner</label><br>
+						<label><input type="checkbox" name="meal_type[]" value="breakfast">Breakfast</label><br>
+						<label><input type="checkbox" name="meal_type[]" value="lunch">Lunch</label><br>
+						<label><input type="checkbox" name="meal_type[]" value="dinner">Dinner</label><br>
 					</div>
 					<div class="input-box full-width">
-						<span class="details">Gender</span>
+						<span class="details" Required>Gender</span>
 						<label><input type="radio" name="gender" value="Male">Male</label><br>
 						<label><input type="radio" name="gender" value="Female">Female</label><br>
 					</div>

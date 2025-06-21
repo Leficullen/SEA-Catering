@@ -38,6 +38,20 @@ function isActiveForm($formName, $activeForm) {
     </style>
 </head>
 <body class="login">
+    <nav class ="navbar">
+    <a href="#" class ="navbar-logo">SEA<span>-Catering</span>.</a>
+
+    <div class="navbar-nav">
+      <a href="index.php">Home</a>
+      <a href="index.php#our-menu">Menu</a>
+      <a href="subscription.php">Subscription</a>
+      <a href="index.php#contact">Contact Us</a>
+    </div>
+
+    <div class="navbar-extra">
+      <a href="auth_redirect.php" id="dashboard"><i data-feather="user"></i>></i></a>
+      <a href="#" id="menu"><i data-feather="menu"></i>></i></a>
+  </nav>
     <div class="container">
         <div class="form-box <?= isActiveForm('login', $activeForm); ?>" id="login-form">
             <form action="login_register.php" method="post">
@@ -70,7 +84,10 @@ function isActiveForm($formName, $activeForm) {
         </div>
     </div>
 
-    <script src="js/script.js"></script>
-    
+
+    <script>
+        feather.replace();
+    </script>    
 </body>
+      <script src="js/script.js"></script>
 </html>

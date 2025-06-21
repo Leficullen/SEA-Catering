@@ -34,7 +34,8 @@ if (isset($_POST['register'])) {
         exit();
     } 
 
-    $conn->query("INSERT INTO userss (name, email, password, role) VALUES ('$name', '$email', '$password', '$role') ");
+    $conn->query("INSERT INTO userss (name, email, password, role)
+     VALUES ('$name', '$email', '$password', '$role') ");
 
     header("Location: login.php");
     exit();

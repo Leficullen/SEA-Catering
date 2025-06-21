@@ -279,6 +279,7 @@ body {
   color: #fff;
   font-size: 1rem;
   border: none;
+  font-family: "poppins";
 }
 .subscription ,.input-box input[type="checkbox"] {
   display:none;
