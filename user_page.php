@@ -63,23 +63,25 @@ if ($result && mysqli_num_rows($result) > 0) {
       <div class="subscription-box">
         <p>Viewing Your Subscription: </p>  
         <h2><?=htmlspecialchars($subscription['meal_plan']) ?></h2>
-        <h3><strong>Meal Types: </strong> <?=htmlspecialchars($subscription['meal_type']) ?></h3>
-        <h3><strong>Delivery Days: </strong> <?=htmlspecialchars($subscription['delivery_days']) ?></h3> 
-        <h3><strong>Total Price (/day): Rp</strong> <?=htmlspecialchars($subscription['total_price']) ?></h3> 
-        <h3><strong>Status: </strong> <span class="active-status"><?=htmlspecialchars($subscription['status']) ?></span></h3>
+        <div class=subscription-line><h3><strong>Meal Types: </strong></h3> <p><?=htmlspecialchars($subscription['meal_type']) ?></p></div>
+        <div class=subscription-line><h3><strong>Delivery Days: </strong></h3> <p><?=htmlspecialchars($subscription['delivery_days']) ?></p></div> 
+        <div class=subscription-line><h3><strong>Total Price (/day):</strong></h3><p> Rp <?=htmlspecialchars($subscription['total_price']) ?></p></div> 
+        <div class=subscription-line><h3><strong>Status: </strong></h3> <p> <span class="active-status"><?=htmlspecialchars($subscription['status']) ?></span></p></div>
         <?php else: ?>
           <p>You have no active subscription yet</p>
         <?php endif; ?>
       </div>
       <div class="pause-box">
         <form action="pause_subscription.php" method="POST">
-          <h3><strong>Pause Subscription: </strong></h3><br><br>
+          <h3><strong>Pause Subscription: </strong></h3>
+          <div class= "date">
+          <p>Select the date that you want to start your pause:</p>
           <input type="date" name="pause_start" required>
+          <p>Select the date that you want to end your pause:</p>
           <input type="date" name="pause_end" required>
           <input type="hidden" name="subscription_id" value="<?= $subscription['id'] ?>" >
           <button type="submit" class="pause-btn">Pause</button>
-          <br><br>
-          
+          </div>          
         </form>
       </div>
       <div class="cancel-box">
