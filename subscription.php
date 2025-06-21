@@ -17,15 +17,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $meal_type_str = isset($_POST['meal_type']) ? implode(', ',$_POST['meal_type']) : '';
     $gender = $_POST['gender'] ?? '';
 	$total_price = $_POST['total_price'] ?? 0;
-}
 
-$sql = $conn->query("INSERT INTO subscription (full_name, phone_number, `address`, allergies, delivery_days, meal_plan, meal_type, gender, total_price, `status`, created_at)
-        VALUES ('$full_name', '$phone_number', '$address', '$allergies', '$meal_plan', '$delivery_days_str', '$meal_type_str', '$gender', '$total_price', 'active', NOW()");
+	$stmt = $conn->prepare("INSERT INTO subscription (full_name, phone_number, `address`, allergies, delivery_days, meal_plan, meal_type, gender, total_price, `status`, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'active', NOW())");
+	
+	$stmt->bind_param("ssssssssi", 
+    $full_name, $phone_number, $address, $allergies,
+    $delivery_days_str, $meal_plan, $meal_type_str,
+    $gender, $total_price );
 
-if ($conn->query($sql) === TRUE) {
-    echo "successed";
-} else {
-	echo "failed" . $conn->error;
+	if ($stmt->execute()) {
+		echo "successed";
+	} else {
+		echo "failed" . $stmt->error;
+	}
 }
 ?>
 
