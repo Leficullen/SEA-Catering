@@ -67,9 +67,6 @@ if ($result && mysqli_num_rows($result) > 0) {
         <div class=subscription-line><h3><strong>Delivery Days: </strong></h3> <p><?=htmlspecialchars($subscription['delivery_days']) ?></p></div> 
         <div class=subscription-line><h3><strong>Total Price (/day):</strong></h3><p> Rp <?=htmlspecialchars($subscription['total_price']) ?></p></div> 
         <div class=subscription-line><h3><strong>Status: </strong></h3> <p> <span class="active-status"><?=htmlspecialchars($subscription['status']) ?></span></p></div>
-        <?php else: ?>
-          <p>You have no active subscription yet</p>
-        <?php endif; ?>
       </div>
       <div class="pause-box">
         <form action="pause_subscription.php" method="POST">
@@ -90,6 +87,9 @@ if ($result && mysqli_num_rows($result) > 0) {
           <button type="submit" class="cancel-btn">Cancel Subscription</button>
         </form> 
       </div>
+      <?php else: ?>
+        <p>You have no active subscription yet</p>
+      <?php endif; ?>
     </div>
 
     <!--icons-->
