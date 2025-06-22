@@ -713,14 +713,14 @@ body {
 }
 
 /* user page */
-.user_page h1 {
+.user_page h1, .admin_page h1 {
   font-size: 2.5rem;
   margin: 50px auto auto 20px;
 }
-.user_page h1 span {
+.user_page h1 span, .admin_page h1 span {
   color: #4cbb17;
 }
-.user_page .box p {
+.user_page .box p, .admin_page p {
   margin: auto 22px;
   font-size: 1.2rem;
 }
@@ -737,8 +737,6 @@ body {
   max-width: 95%;
   justify-items: center;
   margin: 10px auto;
-
-
 }
 .user_page .subscription-box {
   background-color: #000;
@@ -835,7 +833,7 @@ body {
 .user_page .pause-box h3 {
   margin-bottom: auto;
 }
-.user_page .logout-btn {
+.user_page .logout-btn, .admin_page .logout-btn {
   position: absolute;
   background-color: red;
   color: #fff;
@@ -868,6 +866,22 @@ body {
   background-color: #fff;
   transition: 0.3s ease;
 }
+
+.admin_page .row {
+  display: flex;
+  flex-direction: row ;
+  padding: 20px;
+  background-color: #222;
+  color: white;
+  border-radius: 10px;
+  flex-wrap: wrap;  
+  gap: 10px;
+  max-width: 95%;
+  justify-items: center;
+  margin: 10px auto;
+  justify-content: center;
+}
+
 
 /*Tablet screen*/
 @media (max-width: 768px) {

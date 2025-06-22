@@ -1,9 +1,14 @@
 <?php
 
 session_start();
-if (isset($_SESSION['email'])) {
-    header("Location: user_page.php");
-    exit();
+if (isset($_SESSION['email']) && isset($_SESSION['role'])) {
+    if ($_SESSION['role'] === 'admin') {
+        header ("Location: admin_page.php");
+        exit();
+    } elseif ($_SESSION['role'] === 'user') {
+        header ("Location: usser_page.php");
+        exit();
+    }
 }
 
 $errors = [

@@ -6,6 +6,12 @@ if (!isset($_SESSION['email'])) {
 	header("Location: login.php");
 	exit();
 }
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+	$_SESSION['message'] = "You don't allowed to access this page.";
+	$_SESSION['message_type'] = "error";
+	header ("Location: admin_page.php");
+	exit ();
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$email = $_SESSION['email'];

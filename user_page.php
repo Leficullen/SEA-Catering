@@ -140,7 +140,7 @@ if (isset($_SESSION['message'])) {
       <?php endif; ?>
     </div>
 
-    <!--icons-->
+  <!--icons-->
   <script>
    feather.replace();
   </script>
