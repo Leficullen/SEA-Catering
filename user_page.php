@@ -10,12 +10,34 @@ if (!isset($_SESSION['email'])) {
 }
 $email = $_SESSION['email'];
 
-$query = "SELECT * FROM subscription WHERE email = '$email' AND status = 'active' LIMIT 1 ";
-$result = mysqli_query ($conn, $query);
+$query = "SELECT * FROM subscription WHERE email = ? ORDER BY CASE
+  WHEN status = 'active' THEN 1
+  WHEN status = 'paused' THEN 2
+  WHEN status = 'cancelled' THEN 3
+  ELSE 4
+  END,
+  created_at DESC LIMIT 1";
+$stmt_subscription = $conn->prepare($query);
+if ($stmt_subscription === false) {
+    echo "\n";
+    die("Error preparing statement: " . $conn->error);
+}
+$stmt_subscription->bind_param("s", $email);
+$stmt_subscription->execute();
+$result = $stmt_subscription->get_result();
 
 $subscription = null;
-if ($result && mysqli_num_rows($result) > 0) {
-    $subscription = mysqli_fetch_assoc($result);
+if ($result && $result->num_rows > 0) {
+    $subscription = $result->fetch_assoc();
+}
+$stmt_subscription->close();
+if (isset($_SESSION['message'])) {
+   $message_type = $_SESSION['message_type'] ?? 'info';
+   echo '<div class="alert alert-' . $message_type . '">';
+   echo htmlspecialchars($_SESSION['message']);
+   echo '</div>';
+   unset($_SESSION['message']);
+   unset($_SESSION['message_type']);
 }
 ?>
 
@@ -60,35 +82,61 @@ if ($result && mysqli_num_rows($result) > 0) {
     <button class="logout-btn" onclick="window.location.href='logout.php'">Logout</button>
     <div class="row">
       <?php if ($subscription): ?>
-      <div class="subscription-box">
-        <p>Viewing Your Subscription: </p>  
-        <h2><?=htmlspecialchars($subscription['meal_plan']) ?></h2>
-        <div class=subscription-line><h3><strong>Meal Types: </strong></h3> <p><?=htmlspecialchars($subscription['meal_type']) ?></p></div>
-        <div class=subscription-line><h3><strong>Delivery Days: </strong></h3> <p><?=htmlspecialchars($subscription['delivery_days']) ?></p></div> 
-        <div class=subscription-line><h3><strong>Total Price (/day):</strong></h3><p> Rp <?=htmlspecialchars($subscription['total_price']) ?></p></div> 
-        <div class=subscription-line><h3><strong>Status: </strong></h3> <p> <span class="active-status"><?=htmlspecialchars($subscription['status']) ?></span></p></div>
-      </div>
-      <div class="pause-box">
-        <form action="pause_subscription.php" method="POST">
-          <h3><strong>Pause Subscription: </strong></h3>
-          <div class= "date">
-          <p>Select the date that you want to start your pause:</p>
-          <input type="date" name="pause_start" required>
-          <p>Select the date that you want to end your pause:</p>
-          <input type="date" name="pause_end" required>
-          <input type="hidden" name="subscription_id" value="<?= $subscription['id'] ?>" >
-          <button type="submit" class="pause-btn">Pause</button>
-          </div>          
-        </form>
-      </div>
-      <div class="cancel-box">
-        <form action="cancel_subscription.php" method="POST" onsubmit="return confirm('Are you sure you want to cancel your subscription permanently');">
-          <input type="hidden" name="subscription_id" value="<?= $subscription['id'] ?>">
-          <button type="submit" class="cancel-btn">Cancel Subscription</button>
-        </form> 
-      </div>
+        <div class="subscription-box">
+          <?php if ($subscription['status'] === 'cancelled'): ?>
+            <p> You have no active subscription yet </p>
+            <?php else: ?> 
+            <p> Viewing Your Subscription: </p> 
+            <h2><?= htmlspecialchars($subscription['meal_plan']) ?></h2>
+            <div class=subscription-line><h3><strong>Meal Types: </strong></h3> <p><?=htmlspecialchars($subscription['meal_type']) ?></p></div>
+            <div class=subscription-line><h3><strong>Delivery Days: </strong></h3> <p><?=htmlspecialchars($subscription['delivery_days']) ?></p></div> 
+            <div class=subscription-line><h3><strong>Total Price (/day):</strong></h3><p> Rp <?=htmlspecialchars($subscription['total_price']) ?></p></div> 
+            <div class=subscription-line><h3><strong>Status: </strong></h3> <p> <span class="active-status"><?=htmlspecialchars($subscription['status']) ?></span></p></div>
+            
+            <?php if ($subscription['status'] === 'paused'): ?>
+              <div class=subscription-line><h3><strong>Pause Start: </strong></h3> <p><?=htmlspecialchars($subscription['pause_start_date']) ?></p></div>
+              <div class=subscription-line><h3><strong>Pause End: </strong></h3> <p><?=htmlspecialchars($subscription['pause_end_date']) ?></p></div>
+              <form action="resume_subscription.php" method="POST">
+                <input type="hidden" name="subscription_id" value="<?= $subscription['id'] ?>">
+                <button type="submit" class="resume-btn cta">Resume Subscription</button>
+              </form>
+            <?php endif; ?>
+          <?php endif; ?>
+        </div>
+
+        <?php if ($subscription['status'] === 'active'): ?>  
+          <div class="pause-box">
+            <form action="pause_subscription.php" method="POST">
+              <h3><strong>Pause Subscription: </strong></h3>
+              <div class= "date">
+              <p>Select the date that you want to start your pause:</p>
+              <input type="date" name="pause_start" required>
+              <p>Select the date that you want to end your pause:</p>
+              <input type="date" name="pause_end" required>
+              <input type="hidden" name="subscription_id" value="<?= $subscription['id'] ?>" >
+              <button type="submit" class="pause-btn">Pause</button>
+              </div>          
+            </form>
+          </div> 
+          <div class="cancel-box">
+            <form action="cancel_subscription.php" method="POST" onsubmit="return confirm('Are you sure you want to cancel your subscription permanently');">
+              <input type="hidden" name="subscription_id" value="<?= $subscription['id'] ?>">
+              <button type="submit" class="cancel-btn">Cancel Subscription</button>
+            </form> 
+          </div>
+        <?php elseif ($subscription['status'] === 'paused'): ?>
+          <div class="cancel-box">
+            <form action="cancel_subscription.php" method="POST" onsubmit="return confirm('Are you sure you want to cancel your paused subscription permanently?');">
+              <input type="hidden" name="subscription_id" value="<?= $subscription['id'] ?>">
+              <button type="submit" class="cancel-btn">Cancel Subscription</button>
+            </form>
+          </div>
+        <?php endif; ?>
+
       <?php else: ?>
-        <p>You have no active subscription yet</p>
+        <div class="subscription-box">
+          <p>You have no active subscription yet. <br> Please go to the <a href="subscription.php">Subscription</a> page to start one!</p>
+        </div>
       <?php endif; ?>
     </div>
 

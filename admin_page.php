@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+include 'config.php'
 if (!isset($_SESSION['email'])) {
     header("Location: login.php");
     exit();
@@ -14,7 +15,8 @@ if (!isset($_SESSION['email'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
     <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap"/>
+    
     <style>
       body {
         font-family: 'poppins',sans-serif;
