@@ -721,7 +721,7 @@ body {
   color: #4cbb17;
 }
 .user_page .box p {
-  margin: 3px 22px;
+  margin: auto 22px;
   font-size: 1.2rem;
 }
 
@@ -733,7 +733,11 @@ body {
   color: white;
   border-radius: 10px;
   flex-wrap: wrap;  
-  gap: 30px;
+  gap: 10px;
+  max-width: 95%;
+  justify-items: center;
+  margin: 10px auto;
+
 
 }
 .user_page .subscription-box {
@@ -782,8 +786,36 @@ body {
   gap: 5px;
   margin:0;
 }
+.user_page .pause-box input {
+  border: none;
+  outline: none;
+  background-color: #222;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-align: center;
+  padding: 3px;
+  font-family: "poppins";
+}
+.user_page .pause-box button {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #4cbb17;
+  font-family: "poppins";
+  font-size: 1rem;
+  margin-top: 3px;
+  font-weight: bold;
+}
+.user_page .pause-box button:hover {
+  color: #4cbb17;
+  background-color: #fff;
+  transition: 0.3s ease;
+}
+
 .user_page .pause-box h3 {
-  margin-bottom: 5px;
+  margin-bottom: auto;
 }
 .user_page .logout-btn {
   position: absolute;
@@ -794,9 +826,29 @@ body {
   padding: 5px 10px;
   font-size: 1rem;
   border-radius: 2px;
+  font-weight: bold;
+  font-family: "poppins";
 }
+.user_page .logout-btn:hover {
+  color: red;
+  background-color: #fff;
+  transition: 0.3s ease;
+}
+
 .user_page .cancel-box button {
-  color:#4cbb17;
+  color:#fff; 
+  border:none;
+  outline: none;
+  border-radius: 3px;
+  background-color: red;
+  padding: 5px;
+  font-family: "poppins";
+  font-weight: bold;
+}
+.user_page .cancel-box button:hover {
+  color: red;
+  background-color: #fff;
+  transition: 0.3s ease;
 }
 
 /*Tablet screen*/
@@ -905,6 +957,24 @@ body {
   }
   .contact .row {
     flex-direction:column;
+  }
+  .user_page .box h1 {
+    margin: 5px 20px;
+  }
+  .user_page .logout-btn {
+    top: 70px;
+  }
+  .user_page .row {
+    flex-direction: column;
+  }
+  .user_page .subscription-box{
+    width: 100%;
+  }
+  .user_page .pause-box {
+    width: 100%;
+  }
+  .user_page .cancel-box button {
+    font-size: 90%;
   }
 }
 

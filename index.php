@@ -108,7 +108,7 @@ $is_logged_in = isset($_SESSION['email']);
           <img src="img/protein-plan.jpg">
           <h3>Protein Plan</h3>
           <p class="product-desc">The Protein Plan fuels your body with high-protein meals perfect for active lifestyles and muscle growth. Carefully crafted with lean meats, plant-based proteins, and balanced carbs. Great for fitness enthusiasts and anyone looking to stay energized throughout the day.</p>
-          <p class="product-content"> Calories: approx. 550–650 kcal<br>Protein: 35–50g per serving</p>
+          <p class="product-content"> Calories: approx. 550–650 kcal<br>Protein: 35–50g per serving<br>Rp 40.000,00</p>
           <a href="subscription.php" class="pop-up-btn">Subscribe Now!</a>
         </div>
       </div>
@@ -118,7 +118,7 @@ $is_logged_in = isset($_SESSION['email']);
           <img src="img/diet-plan.jpg">
           <h3>Diet Plan</h3>
           <p class="product-desc">Our Diet Plan is specially designed for those aiming to lose or maintain weight without sacrificing flavor. Each meal is portion-controlled and calorie-conscious, using fresh and nutritious ingredients. Ideal for anyone who wants to eat clean and feel lighter every day.</p>
-          <p class="product-content">Calories: approx. 400–500 kcal <br>High fiber, low sugar & fat </p>
+          <p class="product-content">Calories: approx. 400–500 kcal <br>High fiber, low sugar & fat <br> Rp 30.000,00</p>
           <a href="subscription.php" class="pop-up-btn">Subscribe Now!</a>
         </div>
       </div>
@@ -126,9 +126,9 @@ $is_logged_in = isset($_SESSION['email']);
         <div class="pop-up-container">
           <button type="button" class="close-popup" onclick="closePopup()">&times;</button>
           <img src="img/royal-plan.jpg">
-          <h3>Protein Plan</h3>
-          <p class="product-desc">The Protein Plan fuels your body with high-protein meals perfect for active lifestyles and muscle growth. Carefully crafted with lean meats, plant-based proteins, and balanced carbs. Great for fitness enthusiasts and anyone looking to stay energized throughout the day.</p>
-          <p class="product-content"> Calories: approx. 550–650 kcal<br>Protein: 35–50g per serving</p>
+          <h3>Royal Plan</h3>
+          <p class="product-desc">The Royal Plan offers a premium dining experience with gourmet healthy meals delivered to your door. It combines luxury ingredients, rich flavors, and optimal nutrition in every bite. Perfect for those who want the best of both health and indulgence.</p>
+          <p class="product-content"> Calories: approx. 550–650 kcal<br>Protein: 35–50g per serving<br>Rp 60.000,00</p>
           <a href="subscription.php" class="pop-up-btn">Subscribe Now!</a>
         </div>
       </div>
