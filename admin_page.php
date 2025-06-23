@@ -88,28 +88,24 @@ $subscription_growth = $subscription_growth_result ? $subscription_growth_result
         <p>Start Date:</p>
         <input type="date" name="start_date" value= "<?= htmlspecialchars($start_date); ?>">
         <p>End Date:</p>
-        <input type="date" name="end_date" value= "<?= htmlspecialchars($end_date); ?>">>
+        <input type="date" name="end_date" value= "<?= htmlspecialchars($end_date); ?>">
         <button type="submit" class="filter-btn" > Apply Filter <i data feather ="filter"></i></button>
       </form> 
 
       <div class="dashboard-grid">
-        <div class="card-newsubscriptions"> 
+        <div class="card"> 
           <h3>New Subscriptions</h3>
           <p><?= htmlspecialchars($new_subscriptions); ?></p>
         </div>
-        <div class="card-mrr"> 
+        <div class="card"> 
           <h3>Monthly Recurring Revenue (MRR)</h3>
           <p>Rp <?= number_format($mrr, 0, ',', '.'); ?></p>
         </div>
-        <div class="card-reactivations"> 
+        <div class="card"> 
           <h3>Reactivations</h3>
           <p><?= htmlspecialchars($reactivations); ?></p>
         </div>
-        <div class="card-reactivations"> 
-          <h3>Reactivations</h3>
-          <p><?= htmlspecialchars($reactivations); ?></p>
-        </div>
-        <div class="card-subscriptiongrowth"> 
+        <div class="card"> 
           <h3>Subscription Growth</h3>
           <p><?= htmlspecialchars($subscription_growth); ?></p>
         </div>

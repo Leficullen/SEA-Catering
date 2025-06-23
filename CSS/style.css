@@ -715,13 +715,13 @@ body {
 /* user page */
 .user_page h1, .admin_page h1 {
   font-size: 2.5rem;
-  margin: 50px auto auto 20px;
+  margin: 50px auto auto 40px;
 }
 .user_page h1 span, .admin_page h1 span {
   color: #4cbb17;
 }
 .user_page .box p, .admin_page p {
-  margin: auto 22px;
+  margin: auto 40px;
   font-size: 1.2rem;
 }
 
@@ -837,7 +837,7 @@ body {
   position: absolute;
   background-color: red;
   color: #fff;
-  right:20px;
+  right:40px;
   top:120px;
   padding: 5px 10px;
   font-size: 1rem;
@@ -845,7 +845,7 @@ body {
   font-weight: bold;
   font-family: "poppins";
 }
-.user_page .logout-btn:hover {
+.user_page .logout-btn:hover, .admin_page .logout-btn:hover {
   color: red;
   background-color: #fff;
   transition: 0.3s ease;
@@ -913,7 +913,26 @@ body {
   background-color: #fff;
   transition: 0.3s ease;
 }
-
+.admin_page .dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(120px, auto);
+  gap: 20px;
+  flex-grow: 1;
+  padding: 0 22px;
+}
+.admin_page .card {
+  background-color: #000;
+  border-radius: 5px;
+  padding: 10px;
+}
+.admin_page .card h3 {
+  color: #4cbb17;
+}
+.admin_page .card p {
+  margin: 0;
+  font-size: 1.5rem;
+}
 /*Tablet screen*/
 @media (max-width: 768px) {
   html {
