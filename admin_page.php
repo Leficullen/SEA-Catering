@@ -6,6 +6,39 @@ if (!isset($_SESSION['email'])) {
     header("Location: login.php");
     exit();
 }
+
+$start_date = isset($_GET['start_date']) ? $_GET['start_date'] : date('Y-m-01');
+$end_date = isset($_GET['end_date']) ? $_GET['end_date'] : date('Y-m-t');
+
+function executeQuery($conn, $sql, $params = [], $types = '') {
+    $stmt = $conn->prepare($sql);
+    if ($stmt === false) {
+        error_log("Failed to prepare statement: " . $conn->error);
+        return false;
+    }
+    if (!empty($params)) {
+        $stmt->bind_param($types, ...$params);
+    }
+    $stmt->execute();
+    return $stmt->get_result();
+}
+
+$new_subscriptions_sql = "SELECT COUNT(*) AS total_new_subscriptions FROM subscription WHERE created_at BETWEEN ? AND ?";
+$new_subscriptions_result = executeQuery($conn, $new_subscriptions_sql, [$start_date . ' 00:00:00', $end_date . ' 23:59:59'], 'ss');
+$new_subscriptions = $new_subscriptions_result ? $new_subscriptions_result->fetch_assoc()['total_new_subscriptions'] : 0;
+
+$mrr_sql = "SELECT SUM(total_price) AS total_mrr FROM subscription WHERE status = 'active' AND created_at BETWEEN ? AND ?";
+$mrr_result = executeQuery($conn, $mrr_sql, [$start_date . ' 00:00:00', $end_date . ' 23:59:59'], 'ss');
+$mrr = $mrr_result ? $mrr_result->fetch_assoc()['total_mrr'] : 0;
+
+$reactivations_sql = "SELECT COUNT(*) AS total_reactivations FROM subscription WHERE status = 'reactivated' AND created_at BETWEEN ? AND ?";
+$reactivations_result = executeQuery($conn, $reactivations_sql, [$start_date . ' 00:00:00', $end_date . ' 23:59:59'], 'ss');
+$reactivations = $reactivations_result ? $reactivations_result->fetch_assoc()['total_reactivations'] : 0;
+
+$subscription_growth_sql = "SELECT COUNT(*) AS total_active_subscriptions FROM subscription WHERE status = 'active'";
+$subscription_growth_result = executeQuery($conn, $subscription_growth_sql);
+$subscription_growth = $subscription_growth_result ? $subscription_growth_result->fetch_assoc()['total_active_subscriptions'] : 0;
+
 ?>
 
 <!DOCTYPE html>
@@ -51,11 +84,35 @@ if (!isset($_SESSION['email'])) {
     <button class="logout-btn" onclick="window.location.href='logout.php'">Logout</button>
 
     <div class="row">
-        <div class="date-form">
-          <input type="date" name="filter_start" required>
-          <input type="date" name="filter_end" required>
+      <form action="admin_page.php" method="GET" class="date-form">
+        <p>Start Date:</p>
+        <input type="date" name="start_date" value= "<?= htmlspecialchars($start_date); ?>">
+        <p>End Date:</p>
+        <input type="date" name="end_date" value= "<?= htmlspecialchars($end_date); ?>">>
+        <button type="submit" class="filter-btn" > Apply Filter <i data feather ="filter"></i></button>
+      </form> 
+
+      <div class="dashboard-grid">
+        <div class="card-newsubscriptions"> 
+          <h3>New Subscriptions</h3>
+          <p><?= htmlspecialchars($new_subscriptions); ?></p>
         </div>
-        <button type="submit" class="filter-btn">Filter</button>
+        <div class="card-mrr"> 
+          <h3>Monthly Recurring Revenue (MRR)</h3>
+          <p>Rp <?= number_format($mrr, 0, ',', '.'); ?></p>
+        </div>
+        <div class="card-reactivations"> 
+          <h3>Reactivations</h3>
+          <p><?= htmlspecialchars($reactivations); ?></p>
+        </div>
+        <div class="card-reactivations"> 
+          <h3>Reactivations</h3>
+          <p><?= htmlspecialchars($reactivations); ?></p>
+        </div>
+        <div class="card-subscriptiongrowth"> 
+          <h3>Subscription Growth</h3>
+          <p><?= htmlspecialchars($subscription_growth); ?></p>
+        </div>
       </div>
     </div>
 

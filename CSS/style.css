@@ -877,11 +877,42 @@ body {
   flex-wrap: wrap;  
   gap: 10px;
   max-width: 95%;
-  justify-items: center;
   margin: 10px auto;
   justify-content: center;
 }
-
+.admin_page .date-form {
+  flex-direction: column;
+  display: flex;
+  padding: 20px;
+  width: 100%;
+  gap: 10px;
+}
+.admin_page .date-form input {
+  text-align: center;
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-family: "poppins";
+}
+.admin_page .date-form p {
+  text-align: left;
+  margin:0;
+}
+.admin_page .date-form button {
+  color: #fff;
+  background-color: #4cbb17;
+  font-family: "poppins";
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  padding: 5px;
+}
+.admin_page .date-form button:hover {
+  color: #4cbb17;
+  background-color: #fff;
+  transition: 0.3s ease;
+}
 
 /*Tablet screen*/
 @media (max-width: 768px) {
