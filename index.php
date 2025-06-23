@@ -1,6 +1,27 @@
 <?php
 session_start();
+include 'config.php';
+
 $is_logged_in = isset($_SESSION['email']);
+
+$testimony = [];
+$sql_testimony = "SELECT name, testimony, created_at FROM testimony ORDER BY created_at DESC LIMIT 5";
+$result_testimony = $conn->query($sql_testimony);
+
+if ($result_testimony && $result_testimony->num_rows > 0) {
+  while ($row = $result_testimony->fetch_assoc()) {
+    $testimony[] = $row;
+  }
+}
+
+$message = '';
+$message_type = '';
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    $message_type = $_SESSION['message_type'] ?? 'info';
+    unset($_SESSION['message']);
+    unset($_SESSION['message_type']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -160,25 +181,44 @@ $is_logged_in = isset($_SESSION['email']);
     </div>
 
    <!--Testimoni-->
-   <section class="testimoni" id="testimoni>">
+   <section class="testimoni" id="testimoni">
     <h1>Leave <span>Your Testimony!</span></h1> 
-    <form action="#">
+
+    <?php if ($message): ?>
+        <div class="alert alert-<?= htmlspecialchars($message_type); ?>">
+            <?= htmlspecialchars($message); ?>
+        </div>
+    <?php endif; ?>
+      
+    <form action="submit_testimony.php" method="POST">
       <div class="user-testi">
         <div class="testi-form1">
           <span class="details">Your Name</span>
-          <input type="text">
+          <input type="text" name="name">
         </div>
         <div class="testi-form2">
           <span class="details">Testimony</span>
-          <textarea type="text"></textarea>
+          <textarea type="text" name="testimony"></textarea>
         </div>
       </div>
         <button type="submit" class="submit">Submit</button>
     </form>
-      <div class></div>
-      <div class="testi-card">
-      </div>
+
+    <div class="testimoni-list">
+      <?php if (!empty($testimony)): ?>
+        <?php foreach ($testimony as $testi): ?>
+          <div class="testi-card">
+            <h4><?= htmlspecialchars($testi['name']); ?></h4>
+            <p>"<?= htmlspecialchars($testi['testimony']); ?>"</p>
+            <p class="testi-date"><?= htmlspecialchars(date('d M Y, H:i', strtotime($testi['created_at']))); ?></p>
+          </div>
+        <?php endforeach; ?>
+       <?php else: ?>
+        <p>There is no testimony yet</p>
+      <?php endif; ?>
+    </div>
   </section>
+
   <!--icons-->
   <script>
    feather.replace();

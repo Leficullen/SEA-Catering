@@ -939,11 +939,12 @@ body {
     font-size: 62.5%;
   }
   .about-us .about-us-image img {
-    max-width: 80%;
+    max-width: 90%;
     object-fit: contain;
     padding: 0 ;
     object-fit: cover;
     width: 100%;
+    scale: 80%;
   
   }
 
