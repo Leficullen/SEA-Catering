@@ -66,7 +66,7 @@ if (isset($_SESSION['message'])) {
     <main class="content">
       <h1>Healthy Meal,<br><span>Anytime,Anywhere</span></h1>
       <p>Customize your meals with ease and get them delivered across Indonesia</p>
-      <a href="subscription.html" class="cta">Subscribe Now!</a>
+      <a href="subscription.php" class="cta">Subscribe Now!</a>
     </main>
   </section>
   
@@ -189,33 +189,31 @@ if (isset($_SESSION['message'])) {
             <?= htmlspecialchars($message); ?>
         </div>
     <?php endif; ?>
-      
-    <form action="submit_testimony.php" method="POST">
-      <div class="user-testi">
-        <div class="testi-form1">
-          <span class="details">Your Name</span>
+
+    <div class="testi">  
+      <form action="submit_testimony.php" method="POST">
+        <div class="user-testi">
+          <span class="details">Your Name :</span>
           <input type="text" name="name">
-        </div>
-        <div class="testi-form2">
-          <span class="details">Testimony</span>
+          <span class="details">Testimony :</span>
           <textarea type="text" name="testimony"></textarea>
         </div>
-      </div>
-        <button type="submit" class="submit">Submit</button>
-    </form>
+          <button type="submit" class="submit">Submit</button>
+      </form>
 
-    <div class="testimoni-list">
-      <?php if (!empty($testimony)): ?>
-        <?php foreach ($testimony as $testi): ?>
-          <div class="testi-card">
-            <h4><?= htmlspecialchars($testi['name']); ?></h4>
-            <p>"<?= htmlspecialchars($testi['testimony']); ?>"</p>
-            <p class="testi-date"><?= htmlspecialchars(date('d M Y, H:i', strtotime($testi['created_at']))); ?></p>
-          </div>
-        <?php endforeach; ?>
-       <?php else: ?>
-        <p>There is no testimony yet</p>
-      <?php endif; ?>
+      <div class="testimoni-list">
+        <?php if (!empty($testimony)): ?>
+          <?php foreach ($testimony as $testi): ?>
+            <div class="testi-card">
+              <h4><?= htmlspecialchars($testi['name']); ?></h4>
+              <p>"<?= htmlspecialchars($testi['testimony']); ?>"</p>
+              <p class="testi-date"><?= htmlspecialchars(date('d M Y', strtotime($testi['created_at']))); ?></p>
+            </div>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <p>There is no testimony yet</p>
+        <?php endif; ?>
+      </div>
     </div>
   </section>
 
