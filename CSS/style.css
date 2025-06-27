@@ -1089,6 +1089,10 @@ body {
     font-size: 55%;
   }
 
+  .navbar {
+    height: 70px;
+  }
+
   .our-menu .menu-items {
     flex-direction: column !important;
     display: flex !important;
