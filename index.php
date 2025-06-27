@@ -5,7 +5,7 @@ include 'config.php';
 $is_logged_in = isset($_SESSION['email']);
 
 $testimony = [];
-$sql_testimony = "SELECT name, testimony, created_at FROM testimony ORDER BY created_at DESC LIMIT 5";
+$sql_testimony = "SELECT name, testimony, created_at FROM testimony ORDER BY created_at DESC LIMIT 10";
 $result_testimony = $conn->query($sql_testimony);
 
 if ($result_testimony && $result_testimony->num_rows > 0) {
@@ -52,13 +52,13 @@ if (isset($_SESSION['message'])) {
     <div class="navbar-nav">
       <a href="#home">Home</a>
       <a href="#our-menu">Menu</a>
-      <a href="subscription.php">Subscription</a>
       <a href="#contact">Contact Us</a>
+      <a href="subscription.php">Subscription</a>
     </div>
 
     <div class="navbar-extra">
       <a href="auth_redirect.php" id="dashboard"><i data-feather="user"></i>></i></a>
-      <a href="#" id="menu"><i data-feather="menu"></i>></i></a>
+      <a href="#" id="menu"><i data-feather="menu"></i></a>
   </nav>
 
   <!--Hero Section -->
@@ -73,7 +73,7 @@ if (isset($_SESSION['message'])) {
   <!--Service List-->
   <section class="service-list" id="service">
     <main class="content">
-      <h2> Our <span>Service List </span></h2>
+      <h2>What <span> Do We Serve ? </span></h2>
       <div class="video">
         <div class="video-card">
           <video src = "vid/meal-customization-video.mp4" autoplay muted loop style="max-width: 390px;"></video>
@@ -103,7 +103,8 @@ if (isset($_SESSION['message'])) {
           <img src="img/protein-plan.jpg" alt="diet-plan" style="max-width:350px">
           <div class="menu-text">
           <h3>Protein Plan</h3>
-          <p>The Protein Plan fuels your body with high-protein meals perfect for active lifestyles and muscle growth. Carefully crafted with lean meats, plant-based proteins, and balanced carbs. Great for fitness enthusiasts and anyone looking to stay energized throughout the day.</p>
+          <p>Rp 40.000,00 </p>
+          <p class="description">The Protein Plan fuels your body with high-protein meals perfect for active lifestyles and muscle growth. Carefully crafted with lean meats, plant-based proteins, and balanced carbs. Great for fitness enthusiasts and anyone looking to stay energized throughout the day.</p>
           <button type="submit" class="see-details" data-popup="pop-up-protein" onclick="openPopup('pop-up-protein')">See Details</button>
           </div>
         </div>
@@ -111,7 +112,8 @@ if (isset($_SESSION['message'])) {
           <img src="img/diet-plan.jpg" alt="diet-plan" style="max-width:350px">
           <div class="menu-text">
             <h3>Diet Plan</h3>
-            <p>Our Diet Plan is specially designed for those aiming to lose or maintain weight without sacrificing flavor. Each meal is portion-controlled and calorie-conscious, using fresh and nutritious ingredients. Ideal for anyone who wants to eat clean and feel lighter every day</p>
+            <p>Rp 30.000,00</p>
+            <p class="description">Our Diet Plan is specially designed for those aiming to lose or maintain weight without sacrificing flavor. Each meal is portion-controlled and calorie-conscious, using fresh and nutritious ingredients. Ideal for anyone who wants to eat clean and feel lighter every day.</p>
             <button type="submit" class="see-details" data-popup="pop-up-diet" onclick="openPopup('pop-up-diet')">See Details</button>
           </div>
         </div>
@@ -119,7 +121,8 @@ if (isset($_SESSION['message'])) {
           <img src="img/royal-plan.jpg" alt="diet-plan" style="max-width:350px">
           <div class="menu-text">
             <h3>Royal Plan</h3>
-            <p>The Royal Plan offers a premium dining experience with gourmet healthy meals delivered to your door. It combines luxury ingredients, rich flavors, and optimal nutrition in every bite. Perfect for those who want the best of both health and indulgence.</p>
+            <p>Rp 60.000,00</p>
+            <p class="description">The Royal Plan offers a premium dining experience with gourmet healthy meals delivered to your door. It combines luxury ingredients, rich flavors, and optimal nutrition in every bite. Perfect for those who want the best of both health and indulgence.</p>
             <button type="submit" class="see-details" data-popup="pop-up-royal" onclick="openPopup('pop-up-royal')">See Details</button>
           </div>
       </div>
@@ -175,9 +178,10 @@ if (isset($_SESSION['message'])) {
         <h3>Manager:</h3>
         <p>Brian<br>
         +628123456789</p>
-        <button class="btn" type="submit" href="#contact">Message Now!</button>
-
-        </div>
+        <a href="https://wa.me/6289504139150">
+          <button class="btn">Message Now!</button>
+        </a>
+      </div>
     </div>
 
    <!--Testimoni-->
@@ -216,12 +220,30 @@ if (isset($_SESSION['message'])) {
       </div>
     </div>
   </section>
+  <!--footer-->
+  <section class="footer">
+    <div class="socials">
+      <a href=""><i data-feather="facebook"></i></a>
+      <a href="https:www.instagram.com/alfirizqyy" target="_blank"><i data-feather="instagram"></i></a> 
+      <a href="https://x.com/alfffcullennn" target="_blank"><i data-feather="twitter"></i></a> 
+    </div>
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#our-menu">Menu</a>
+      <a href="#contact">Contact Us</a>
+      <a href="subscription.php">Subscription</a>
+    </div>
+    <div class="credit">
+      <p>This website is created by <span>Leficullen.</span></p>
+    </div>
+  </section>
 
   <!--icons-->
   <script>
    feather.replace();
   </script>
 </body>
+
 
 <!--JavaScript-->
 <script src ="js/script.js"></script>

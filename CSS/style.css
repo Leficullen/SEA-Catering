@@ -23,7 +23,7 @@ body {
 /*Navbar*/
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 0.8rem 7%;
   background-color: #000;
@@ -33,20 +33,22 @@ body {
   left: 0;
   right: 0;
   z-index: 9999;
+  gap: 5px;
 }
 
 .navbar .navbar-logo {
   font-size: 2.5rem;
   font-weight: 700;
   color: #4cbb17;
+  margin-right: auto;
 }
 
 .navbar .navbar-logo span {
   color: #fff;
+  margin-right: auto;
 }
 
 .navbar .navbar-nav a {
-  position: sticky;
   color: #fff;
   display: inline-block;
   font-size: 1.5rem;
@@ -212,6 +214,7 @@ body {
 .input-box label:hover{
   color:#4cbb17;
   background-color: #fff;
+  transition: 0.3s ease;
 }
 .input-box label:has(input:checked) {
   color:#4cbb17;
@@ -280,6 +283,13 @@ body {
   font-size: 1rem;
   border: none;
   font-family: "poppins";
+  border: 1px solid #222;
+}
+.subscription .input-box input:focus {
+  border: 1px solid #4cbb17;
+  transition: 0.3s ease;
+  box-shadow: 0 0 8px rgba(76, 187, 23, 0.6);
+  outline: none;
 }
 .subscription ,.input-box input[type="checkbox"] {
   display:none;
@@ -299,23 +309,7 @@ body {
 
 }
 
-.subscription .gender-details {
-  margin-top: 2px;
-}
-.subscription .gender-tittle {
-  font-weight: 600;
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-  color: #4cbb17;
-  display: block;
-  padding-top: 1px;
-}
-.subscription .gender {
-  font-size: 1.5rem;
 
-  background-position: 100%;
-
-}
 .subscription .category label {
   margin-right: 20px;
   color: #fff;
@@ -330,7 +324,6 @@ body {
   border-radius: 8px;
   border: none;
   font-size: 1rem;
-  background-color: #222;
   color: #fff;
 }
 .subscription-form .cta{
@@ -359,6 +352,7 @@ body {
 .subscription .cta:hover{
   background-color: #fff;
   color: #4cbb17;
+  transition: 0.3s ease;
 }
 
 /* menu list */
@@ -379,11 +373,17 @@ body {
 
 } 
 .our-menu .menu-items p {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   margin-right: 50px;
+  color: #999;
+  margin-top: auto;
+}
+.our-menu .menu-items .description  {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-top: 5px;
 
 }
-
 .our-menu .menu-list {
   gap: 70px;
 }
@@ -405,6 +405,7 @@ body {
 }
 .our-menu .menu-items h3{
   margin-top: 20px;
+  margin-bottom: 0;
   color: #4cbb17;
   font-size: 2.5rem;
 }
@@ -571,6 +572,7 @@ body {
 .contact .contact-details .btn:hover {
   background-color: #fff;
   color: #4cbb17;
+  transition: 0.3s ease;
 }
 
 /* testimoni section */
@@ -593,19 +595,37 @@ body {
   font-size: 1.2rem;
 }
 .testimoni .user-testi input {
-  border-radius: 3px;
-  font-size: 1rem;
-  padding: 5px;
-  margin-bottom: 5px;
-  font-family: "poppins";
-}
-.testimoni .user-testi textarea {
-  height: 100px;
   border-radius: 5px;
   font-size: 1rem;
   padding: 5px;
   margin-bottom: 5px;
   font-family: "poppins";
+  background-color: #222;
+  border: 1px solid #222;
+  color: #fff;
+}
+.testimoni .user-testi input:focus {
+  border: 1px solid #4cbb17;
+  transition: 0.3s ease;
+  box-shadow: 0 0 8px rgba(76, 187, 23, 0.6);
+  outline: none;
+}
+.testimoni .user-testi textarea {
+  height: 100px;
+  border-radius: 8px;
+  font-size: 1rem;
+  padding: 5px;
+  margin-bottom: 5px;
+  font-family: "poppins";
+  background-color: #222;
+  border:1px solid #222;
+  color: #fff;
+}
+.testimoni .user-testi textarea:focus {
+  border: 1px solid #4cbb17;
+  transition: 0.3s ease;
+  box-shadow: 0 0 8px rgba(76, 187, 23, 0.6);
+  outline: none;
 }
 .testimoni .testi button {
   border-radius: 3px;
@@ -681,8 +701,17 @@ body {
   font-size: 1rem;
   padding: 10px 10px;
   font-family: "poppins";
-  color: #444;  
+  color: #444; 
+  border: 2px solid #fff;
 }
+.login .form-box input:focus, select:focus {
+  border: 2px solid #4cbb17;
+  transition: 0.3s ease;
+  box-shadow: 0 0 8px rgba(76, 187, 23, 0.6);
+  outline: none;
+}
+
+
 .login h2 {
   font-size: 3rem;
   text-align: center;
@@ -723,6 +752,9 @@ body {
   color: #a42834;
   text-align: center;
   margin-bottom: 20px;
+}
+.alert .success {
+  color: #4cbb17;
 }
 
 
@@ -768,7 +800,9 @@ body {
   white-space: nowrap;
   font-size: 1.3rem;
 }
-
+.user_page .subscription-box a {
+  color: #4cbb17;
+}
 .user_page .subscription-line p {
   margin-left:10px;
   font-size: 1.3rem;
@@ -947,6 +981,46 @@ body {
   font-size: 1.5rem;
 }
 
+/* footer section */
+.footer {
+  background-color: #4cbb17;
+  text-align: center;
+  padding: 50px 0 30px;
+  margin-top: 40px;
+}
+.footer .socials a {
+  color: #333;
+  padding: 0 10px 20px;
+  margin: 1rem;
+}
+.footer .socials a:hover {
+  color: #fff;
+  transition: 0.3s ease;
+}
+.footer .links {
+  padding: 10px 0;
+}
+.footer .links a {
+  color:#333;
+  padding: 0 5px;
+  font-size: 1.1rem;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+.footer .links a:hover {
+  color: #fff;
+  transition: 0.3s ease;
+}
+.footer .credit p {
+  color: #333;
+  font-size: 1rem;
+  padding: 5px 0;
+  font-weight: bold;
+}
+.footer .credit p span {
+  color: #fff;
+}
+
 /*Media Queries*/
 
 /*Laptop screen*/
@@ -1045,7 +1119,6 @@ body {
   }
   .our-menu .menu-items p {
     text-align: center;
-    margin-top: 10px;
     margin-left: 30px;
     margin-right: 30px;
     padding: 0 10px;
@@ -1067,11 +1140,15 @@ body {
   .contact .row {
     flex-direction:column;
   }
-  .user_page .box h1 {
+  .user_page .box h1, .admin_page .box h1 {
     margin: 5px 20px;
   }
-  .user_page .logout-btn {
+  .user_page .box p, .admin_page .box p {
+    margin: 0 20px;
+  }
+  .user_page .logout-btn, .admin_page .logout-btn {
     top: 70px;
+    right: 15px;
   }
   .user_page .row {
     flex-direction: column;
@@ -1089,7 +1166,10 @@ body {
     width: 80vw;
   }
   .testimoni .testi {
-    justify-content: center;
+    align-items: center;
+  }
+  .testimoni .testi-card {
+    padding: 10px;
   }
 }
 

@@ -1,12 +1,17 @@
 <?php
 
 session_start();
+
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 if (isset($_SESSION['email']) && isset($_SESSION['role'])) {
     if ($_SESSION['role'] === 'admin') {
         header ("Location: admin_page.php");
         exit();
     } elseif ($_SESSION['role'] === 'user') {
-        header ("Location: usser_page.php");
+        header ("Location: user_page.php");
         exit();
     }
 }
@@ -15,12 +20,14 @@ $errors = [
     'login' => $_SESSION['login_error'] ?? '',
     'register' => $_SESSION['register_error'] ?? ''
 ];
+
+unset($_SESSION['login_error']);
+unset($_SESSION['register_error']);
+
 $activeForm = $_SESSION['active_form'] ?? 'login';
 
-session_unset();
-
 function showError($error) {
-    return !empty($error) ? "<p class='error-message'>$error</p>" : '';
+    return !empty($error) ? "<p class='error-message'>". htmlspecialchars($error)."</p>" : '';
 }
 
 function isActiveForm($formName, $activeForm) {
@@ -54,14 +61,15 @@ function isActiveForm($formName, $activeForm) {
     </div>
 
     <div class="navbar-extra">
-      <a href="auth_redirect.php" id="dashboard"><i data-feather="user"></i>></i></a>
-      <a href="#" id="menu"><i data-feather="menu"></i>></i></a>
+      <a href="auth_redirect.php" id="dashboard"><i data-feather="user"></i></a>
+      <a href="#" id="menu"><i data-feather="menu"></i></a>
   </nav>
     <div class="container">
         <div class="form-box <?= isActiveForm('login', $activeForm); ?>" id="login-form">
             <form action="login_register.php" method="post">
                 <h2>Login</h2>
                 <?= showError($errors['login']); ?>
+                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']); ?>">
                 <input type="email" name="email" placeholder="E-Mail" required>
                 <input type="password" name="password" placeholder="Password" required>
                 <button type="submit" name="login">Login</button>
@@ -72,6 +80,7 @@ function isActiveForm($formName, $activeForm) {
             <form action="login_register.php" method="post">
                 <h2>Register</h2>
                 <?= showError($errors['register']); ?>
+                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']); ?>">
                 <input type="text" name="name"  placeholder="Name" required>
                 <input type="email" name="email" placeholder="E-Mail" required>
                 <input type="password" name="password" placeholder="Password" required
@@ -94,5 +103,6 @@ function isActiveForm($formName, $activeForm) {
         feather.replace();
     </script>    
 </body>
+
       <script src="js/script.js"></script>
 </html>

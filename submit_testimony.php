@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("ss", $_name, $_testimony);
 
     if ($stmt->execute()) {
-        $_SESSION['message'] = "Testimony successfully sent";
+        $_SESSION['message'] = "";
         $_SESSION['message_type'] = "success";
         header ("Location: index.php#testimoni");
         exit();

@@ -8,12 +8,6 @@ $database = "seacusers_db";
 $conn = new mysqli($host, $user, $password, $database);
 
 if ($conn->connect_error) {
-    die("Connection failed: ". $conn->connect_error);
+    error_log("Connection failed: ". $conn->connect_error);
+    exit();
 }
-
-$conn = mysqli_connect("localhost", "root", "", "seacusers_db");
-
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-?>

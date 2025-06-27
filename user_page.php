@@ -67,8 +67,8 @@ if (isset($_SESSION['message'])) {
     <div class="navbar-nav">
       <a href="index.php">Home</a>
       <a href="index.php#our-menu">Menu</a>
-      <a href="subscription.php">Subscription</a>
       <a href="index.php#contact">Contact Us</a>
+      <a href="subscription.php">Subscription</a>
     </div>
 
     <div class="navbar-extra">
