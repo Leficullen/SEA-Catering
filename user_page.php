@@ -86,7 +86,7 @@ if (isset($_SESSION['message'])) {
           <?php if ($subscription['status'] === 'cancelled'): ?>
             <p> You have no active subscription yet </p>
             <?php else: ?> 
-            <p> Viewing Your Subscription: </p> 
+            <p class="view"> Viewing Your Subscription: </p> 
             <h2><?= htmlspecialchars($subscription['meal_plan']) ?></h2>
             <div class=subscription-line><h3><strong>Meal Types: </strong></h3> <p><?=htmlspecialchars($subscription['meal_type']) ?></p></div>
             <div class=subscription-line><h3><strong>Delivery Days: </strong></h3> <p><?=htmlspecialchars($subscription['delivery_days']) ?></p></div> 

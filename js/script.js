@@ -1,7 +1,8 @@
 //Toggle class active
 const navbarNav = document.querySelector(".navbar-nav");
 //ketika ikon menu diklik
-document.querySelector("#menu").onclick = () => {
+document.querySelector("#menu").onclick = (e) => {
+  e.preventDefault();
   navbarNav.classList.toggle("active");
 };
 

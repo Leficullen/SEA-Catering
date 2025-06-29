@@ -28,7 +28,7 @@ if (isset($_SESSION['message'])) {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <title>SEA Catering</title>
 
     <!--Fonts-->
@@ -210,7 +210,7 @@ if (isset($_SESSION['message'])) {
           <?php foreach ($testimony as $testi): ?>
             <div class="testi-card">
               <h4><?= htmlspecialchars($testi['name']); ?></h4>
-              <p>"<?= htmlspecialchars($testi['testimony']); ?>"</p>
+              <p>"<?= htmlspecialchars($testi['testimony']); ?>"</p>  
               <p class="testi-date"><?= htmlspecialchars(date('d M Y', strtotime($testi['created_at']))); ?></p>
             </div>
           <?php endforeach; ?>

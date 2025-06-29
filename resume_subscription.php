@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $conn->prepare("UPDATE subscription SET status = ?, pause_start_date = NULL, pause_end_date = NULL WHERE id = ? AND email = ?");
 
         if ($stmt) {
-            $stmt->bind_param("is", $subscription_id, $user_email);
+            $stmt->bind_param("sis", $new_status, $subscription_id, $user_email);
             if ($stmt->execute()) {
                 if ($new_status === 'reactivated') {
                     $_SESSION ['message'] = "Your subscription has been reactivated.";
