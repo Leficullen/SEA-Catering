@@ -1,6 +1,7 @@
 //Toggle class active
 const navbarNav = document.querySelector(".navbar-nav");
-//ketika ikon menu diklik
+
+//ketika ikon menu diklik (khusus layar hp)
 document.querySelector("#menu").onclick = (e) => {
   e.preventDefault();
   navbarNav.classList.toggle("active");

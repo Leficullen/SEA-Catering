@@ -28,7 +28,7 @@ if (isset($_SESSION['message'])) {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>SEA Catering</title>
 
     <!--Fonts-->
@@ -42,7 +42,13 @@ if (isset($_SESSION['message'])) {
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!--my style-->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="CSS/style.css" />
+    
+    <!--Favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
   </head>
   <body>
   <!--Navbar -->
@@ -220,6 +226,7 @@ if (isset($_SESSION['message'])) {
       </div>
     </div>
   </section>
+
   <!--footer-->
   <section class="footer">
     <div class="socials">
